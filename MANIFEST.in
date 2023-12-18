@@ -1,0 +1,11 @@
+include well_plate/well_plate.min.js
+include well_plate/well_plate.min.js.map
+include well_plate/async-*.js
+include well_plate/async-*.js.map
+include well_plate/*-shared.js
+include well_plate/*-shared.js.map
+include well_plate/metadata.json
+include well_plate/package-info.json
+include README.md
+include LICENSE
+include package.json
