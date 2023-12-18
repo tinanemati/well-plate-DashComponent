@@ -1,7 +1,7 @@
 {
-  "src/lib/components/WellPlate.react.js": {
-    "description": "ExampleComponent is an example component.\nIt takes a property, `label`, and\ndisplays it.\nIt renders an input with the property `value`\nwhich is editable by the user.",
-    "displayName": "WellPlate",
+  "src/lib/components/MyTextInput.react.js": {
+    "description": "MyTextInput is an example component.\nIt takes a property, `label`, and\ndisplays it.\nIt renders an input with the property `value`\nwhich is editable by the user.",
+    "displayName": "MyTextInput",
     "methods": [],
     "props": {
       "id": {
@@ -15,22 +15,19 @@
         "type": {
           "name": "string"
         },
-        "required": true,
-        "description": "A label that will be printed when this component is rendered."
+        "required": false,
+        "description": "The label used to show above of the input",
+        "defaultValue": {
+          "value": "'Default Label with defaultProps'",
+          "computed": false
+        }
       },
       "value": {
         "type": {
           "name": "string"
         },
         "required": false,
-        "description": "The value displayed in the input."
-      },
-      "setProps": {
-        "type": {
-          "name": "func"
-        },
-        "required": false,
-        "description": "Dash-assigned callback that should be called to report property changes\nto Dash, to make them available for callbacks."
+        "description": "The value used to set the default value for the input"
       }
     }
   }
