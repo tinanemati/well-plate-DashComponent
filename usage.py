@@ -1,4 +1,4 @@
-import well_plate
+from well_plate import MyTextInput
 import dash
 from dash import Dash, callback, html, Input, Output
 
@@ -8,16 +8,16 @@ app = Dash(__name__)
 dash._dash_renderer._set_react_version("18.2.0")
 
 app.layout = html.Div([
-    well_plate.WellPlate(
-        id='input',
-        value='my-value',
-        label='my-label'
+    MyTextInput(
+        id='my-test-component',
+        value='A custom text input',
+        label=''
     ),
-    html.Div(id='output')
+    html.Div(id='output-div')
 ])
 
 
-@callback(Output('output', 'children'), Input('input', 'value'))
+@callback(Output('output-div', 'children'), [Input('my-test-component', 'value')])
 def display_output(value):
     return 'You have entered {}'.format(value)
 
