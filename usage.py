@@ -10,8 +10,8 @@ dash._dash_renderer._set_react_version("18.2.0")
 app.layout = html.Div([
     MyTextInput(
         id='my-test-component',
-        value='A custom text input',
-        label=''
+        value='',
+        label='A custom text input(Type Here)'
     ),
     html.Div(id='output-div')
 ])
