@@ -11,15 +11,15 @@ app.layout = html.Div([
     MyTextInput(
         id='my-test-component',
         value='',
-        label='A custom text input(Type Here)'
+        label='Type here'
     ),
     html.Div(id='output-div')
 ])
 
 
-@callback(Output('output-div', 'children'), [Input('my-test-component', 'value')])
-def display_output(value):
-    return 'You have entered {}'.format(value)
+# @callback(Output('output-div', 'children'), [Input('my-test-component', 'value')])
+# def display_output(value):
+#     return 'You have entered {}'.format(value)
 
 
 if __name__ == '__main__':
