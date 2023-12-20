@@ -96,7 +96,7 @@ const WellPlate = (props) => {
 
     return (
       <Tooltip
-        placement="left"
+        placement="top"
         hasArrow
         label={fileName}
         bg="grey"
