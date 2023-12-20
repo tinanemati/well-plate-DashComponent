@@ -113,7 +113,7 @@ const WellPlate = (props) => {
       </Tooltip>
     );
   };
-
+  console.log("this is selected wells:", selectedWells)
   return (
     <>
       <Box
@@ -125,7 +125,7 @@ const WellPlate = (props) => {
       >
         <div style={{paddingBottom: 10}}>
           Selected:{" "}
-          {selectedWells.length > 0 ? selectedWells : "not selected any"}
+          {selectedWells.length > 0 ? `${selectedWells.map((well, _) => well)} ` : "not selected any"}
         </div>
         <div className="well-plate">
           {WellsData.map((well, _) => renderWell(well))}
