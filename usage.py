@@ -49,12 +49,19 @@ for row in rows_384:
 
 app.layout = html.Div([
     WellPlate(
-        id='my-wellplate-component',
+        id='96-wellplate-component',
         WellsData=wells_data_96,
     ),
-    html.Div(id='output-div')
+    html.Div(id='output-div-96')
 ])
 
+# app.layout = html.Div([
+#     WellPlate(
+#         id='384-wellplate-component',
+#         WellsData=wells_data_384,
+#     ),
+#     html.Div(id='output-div-384')
+# ])
 
 # @callback(Output('output-div', 'children'), [Input('my-test-component', 'value')])
 # def display_output(value):
