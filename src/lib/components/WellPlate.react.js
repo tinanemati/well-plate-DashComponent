@@ -103,7 +103,7 @@ const WellPlate = (props) => {
         color="black"
       >
         <div
-          key={index}
+          key={wellId}
           className={`well ${isSelected ? "selected" : ""}`}
           onClick={(e) => handleWellClick(well.wellId, e.ctrlKey)}
           onMouseDown={(e) => handleMouseDown(well.wellId, e.ctrlKey)}
@@ -126,7 +126,7 @@ const WellPlate = (props) => {
           Selected:{" "}
           {selectedWells.length > 0 ? `${selectedWells.map((well, _) => well)} ` : "not selected any"}
         </div>
-        <div className="well-plate">
+        <div className={WellsData.length === 96 ? "well-plate-96" : "well-plate-384"}>
           {WellsData.map((well, index) => renderWell(well, index))}
         </div>
       </Box>

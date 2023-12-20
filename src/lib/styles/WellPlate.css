@@ -1,7 +1,15 @@
 /* Styles for the well plate container */
-.well-plate {
+.well-plate-96 {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
+    grid-gap: 4px;
+    user-select: none;
+    border: 1px solid black;
+  }
+  
+  .well-plate-384 {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
     grid-gap: 4px;
     user-select: none;
     border: 1px solid black;
