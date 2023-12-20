@@ -4,23 +4,21 @@
     grid-template-columns: repeat(12, 1fr);
     grid-gap: 4px;
     user-select: none;
-    border: 1px solid black;
-  }
-  
-  .well-plate-384 {
+}
+
+.well-plate-384 {
     display: grid;
     grid-template-columns: repeat(24, 1fr);
     grid-gap: 4px;
     user-select: none;
-    border: 1px solid black;
-  }
-  
-  /* Styles for each well */
-  .well {
+}
+
+/* Styles for each well */
+.well {
     width: 30px;
     height: 30px;
     background-color: #f7f6f6;
-    border-radius: 50%; 
+    border-radius: 50%;
     border: 2px solid black;
     display: flex;
     user-select: none;
@@ -29,16 +27,16 @@
     justify-content: center;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
-  
-  /* Styles for the selected well */
-  .well.selected {
+}
+
+/* Styles for the selected well */
+.well.selected {
     background-color: #008878; /* Change to your desired selected color */
     color: #fff;
-  }
-  
-  /* Styles for the tooltip on hover */
-  .well:hover::before {
+}
+
+/* Styles for the tooltip on hover */
+.well:hover::before {
     content: attr(data-file-name);
     position: absolute;
     background: rgba(0, 0, 0, 0.8);
@@ -52,9 +50,15 @@
     z-index: 999;
     opacity: 0;
     transition: opacity 0.3s ease;
-  }
-  
-  .well:hover::before {
+}
+
+.well:hover::before {
     opacity: 1;
-  }
-  
+}
+
+.plateTop {
+    width: 14px;
+}
+.border {
+    border: 1px solid black;
+}
