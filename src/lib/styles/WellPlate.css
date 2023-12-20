@@ -1,0 +1,52 @@
+/* Styles for the well plate container */
+.well-plate {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 4px;
+    user-select: none;
+    border: 1px solid black;
+  }
+  
+  /* Styles for each well */
+  .well {
+    width: 40px;
+    height: 40px;
+    background-color: #f7f6f6;
+    border-radius: 50%; /* Make it circular */
+    border: 2px solid black;
+    display: flex;
+    user-select: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Styles for the selected well */
+  .well.selected {
+    background-color: #008878; /* Change to your desired selected color */
+    color: #fff;
+  }
+  
+  /* Styles for the tooltip on hover */
+  .well:hover::before {
+    content: attr(data-file-name);
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .well:hover::before {
+    opacity: 1;
+  }
+  

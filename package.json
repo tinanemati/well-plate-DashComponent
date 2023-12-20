@@ -2,7 +2,7 @@
   "name": "well_plate",
   "version": "0.0.1",
   "description": "A well plate component used in scientific experiments",
-"repository": {
+  "repository": {
     "type": "git",
     "url": "git://github.com/tinanemati/well-plate.git"
   },
@@ -24,6 +24,10 @@
   "author": "tinanemati <tinanemati.tina@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@chakra-ui/react": "^2.8.2",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "framer-motion": "^10.16.16",
     "ramda": "^0.26.1"
   },
   "devDependencies": {
@@ -43,8 +47,8 @@
     "eslint-plugin-react": "^7.14.2",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "react-docgen": "^5.4.3",
+    "react-dom": "^18.2.0",
     "style-loader": "^3.3.3",
     "styled-jsx": "^3.2.1",
     "webpack": "^5.84.1",

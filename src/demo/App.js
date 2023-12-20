@@ -1,16 +1,17 @@
 /* eslint no-magic-numbers: 0 */
 import React, {useState} from 'react';
-import {MyTextInput} from '../lib';
+import {WellPlate} from '../lib';
 
 const App = () => {
-    const [state, setState] = useState({value: '', label: 'Type Here'});
-    const setProps = (newProps) => {
-        setState(newProps);
-    };
+    // const [state, setState] = useState({wells: [], label: 'Selected Well'});
+    // const setProps = (newProps) => {
+    //     setState(newProps);
+    // };
 
     return (
         <div>
-            <MyTextInput setProps={setProps} {...state} />
+            {/* <MyTextInput setProps={setProps} {...state} /> */}
+            <WellPlate />
         </div>
     );
 };

@@ -1,6 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import MyTextInput from './components/MyTextInput.react';
-
+import WellPlate from './components/WellPlate.react';
 export {
-    MyTextInput
+   WellPlate
 };
