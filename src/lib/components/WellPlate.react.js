@@ -96,10 +96,10 @@ const WellPlate = (props) => {
 
     return (
       <Tooltip
-        placement="top"
+        placement="left"
         hasArrow
         label={fileName}
-        bg="gray.100"
+        bg="grey"
         color="black"
       >
         <div
@@ -118,13 +118,12 @@ const WellPlate = (props) => {
     <>
       <Box
         sx={{
-          width: 574,
-          height: 400,
+          width: "fit-content",
           borderRadius: 2,
           margin: "auto",
         }}
       >
-        <div>
+        <div style={{paddingBottom: 10}}>
           Selected:{" "}
           {selectedWells.length > 0 ? selectedWells : "not selected any"}
         </div>
