@@ -88,7 +88,7 @@ const WellPlate = (props) => {
     ctrlKeyRef.current = false;
   };
 
-  const renderWell = (well) => {
+  const renderWell = (well, index) => {
     const wellId = well.wellId;
     const fileName = well.fileName;
 
@@ -103,7 +103,7 @@ const WellPlate = (props) => {
         color="black"
       >
         <div
-          key={wellId}
+          key={index}
           className={`well ${isSelected ? "selected" : ""}`}
           onClick={(e) => handleWellClick(well.wellId, e.ctrlKey)}
           onMouseDown={(e) => handleMouseDown(well.wellId, e.ctrlKey)}
@@ -128,7 +128,7 @@ const WellPlate = (props) => {
           {selectedWells.length > 0 ? `${selectedWells.map((well, _) => well)} ` : "not selected any"}
         </div>
         <div className="well-plate">
-          {WellsData.map((well, _) => renderWell(well))}
+          {WellsData.map((well, index) => renderWell(well, index))}
         </div>
       </Box>
     </>
