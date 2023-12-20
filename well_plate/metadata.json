@@ -1,7 +1,7 @@
 {
-  "src/lib/components/MyTextInput.react.js": {
-    "description": "MyTextInput is an example component.\nIt takes a property, `label`, and\ndisplays it.\nIt renders an input with the property `value`\nwhich is editable by the user.",
-    "displayName": "MyTextInput",
+  "src/lib/components/WellPlate.react.js": {
+    "description": "WellPlate component that allow the user to select wells \nin a generic well plate",
+    "displayName": "WellPlate",
     "methods": [],
     "props": {
       "id": {
@@ -11,23 +11,12 @@
         "required": false,
         "description": "The ID used to identify this component in Dash callbacks."
       },
-      "label": {
+      "WellsData": {
         "type": {
-          "name": "string"
+          "name": "array"
         },
         "required": false,
-        "description": "The label used to show above of the input",
-        "defaultValue": {
-          "value": "'Default Label with defaultProps'",
-          "computed": false
-        }
-      },
-      "value": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "The value used to set the default value for the input"
+        "description": "The data used to redner plate"
       }
     }
   }

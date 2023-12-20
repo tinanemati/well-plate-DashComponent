@@ -8,6 +8,7 @@ import { Box } from "@chakra-ui/react";
  * in a generic well plate 
  */
 const WellPlate = (props) => {
+  const WellsData = props.WellsData;
   const [selectedWells, setSelectedWells] = useState([]);
   const [isSelecting, setIsSelecting] = useState(false);
   const selectionStartRef = useRef(null);
@@ -87,7 +88,7 @@ const WellPlate = (props) => {
     ctrlKeyRef.current = false;
   };
 
-  const renderWell = (well, index) => {
+  const renderWell = (well) => {
     const wellId = well.wellId;
     const fileName = well.fileName;
 
@@ -113,32 +114,6 @@ const WellPlate = (props) => {
     );
   };
 
-  // Generate an array of well IDs (A1, A2, ..., H12)
-  const wellIds = [];
-  for (let row = 0; row < 8; row++) {
-    for (let col = 1; col <= 12; col++) {
-      const wellId = String.fromCharCode(65 + row) + col;
-      wellIds.push(wellId);
-    }
-  }
-
-  // well Data
-  const platesData = {
-    plateId: "StringPlateId",
-    FileDir: "StringFileDir",
-    WellsData: [],
-  };
-
-  const rows = ["A", "B", "C", "D", "E", "F", "G", "H"];
-  const columns = Array.from({ length: 12 }, (_, i) => (i + 1).toString());
-  let count = 0;
-  for (const row of rows) {
-    for (const col of columns) {
-      const wellId = row + col;
-      const fileName = `test ${count++}`;
-      platesData.WellsData.push({ wellId, fileName });
-    }
-  }
   return (
     <>
       <Box
@@ -154,11 +129,20 @@ const WellPlate = (props) => {
           {selectedWells.length > 0 ? selectedWells : "not selected any"}
         </div>
         <div className="well-plate">
-          {platesData.WellsData.map((well, index) => renderWell(well, index))}
+          {WellsData.map((well, _) => renderWell(well))}
         </div>
       </Box>
     </>
   );
 };
-
+WellPlate.propTypes = {
+    /**
+     * The ID used to identify this component in Dash callbacks.
+     */
+    id: PropTypes.string,
+    /**
+     * The data used to redner plate
+     */
+    WellsData: PropTypes.array,
+};
 export default WellPlate;

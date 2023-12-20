@@ -1,5 +1,5 @@
-from .MyTextInput import MyTextInput
+from .WellPlate import WellPlate
 
 __all__ = [
-    "MyTextInput"
+    "WellPlate"
 ]
