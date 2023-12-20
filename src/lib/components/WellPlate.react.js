@@ -113,7 +113,6 @@ const WellPlate = (props) => {
       </Tooltip>
     );
   };
-  console.log("this is selected wells:", selectedWells)
   return (
     <>
       <Box
