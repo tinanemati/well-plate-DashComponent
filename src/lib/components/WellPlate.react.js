@@ -90,7 +90,7 @@ const WellPlate = (props) => {
         ctrlKeyRef.current = false;
     };
 
-    const renderWell = (well, index) => {
+    const renderWell96 = (well, index) => {
         const wellId = well.wellId;
         const fileName = well.fileName;
 
@@ -106,7 +106,7 @@ const WellPlate = (props) => {
             >
                 <div
                     key={wellId}
-                    className={`well ${isSelected ? 'selected' : ''}`}
+                    className={`well-96 ${isSelected ? 'selected' : ''}`}
                     onClick={(e) => handleWellClick(well.wellId, e.ctrlKey)}
                     onMouseDown={(e) => handleMouseDown(well.wellId, e.ctrlKey)}
                     onMouseMove={(e) => handleMouseMove(well.wellId, e.ctrlKey)}
@@ -116,6 +116,31 @@ const WellPlate = (props) => {
         );
     };
 
+    const renderWell384 = (well, index) => {
+        const wellId = well.wellId;
+        const fileName = well.fileName;
+
+        const isSelected = selectedWells.includes(well.wellId);
+
+        return (
+            <Tooltip
+                placement="top"
+                hasArrow
+                label={fileName}
+                bg="grey"
+                color="black"
+            >
+                <div
+                    key={wellId}
+                    className={`well-384 ${isSelected ? 'selected' : ''}`}
+                    onClick={(e) => handleWellClick(well.wellId, e.ctrlKey)}
+                    onMouseDown={(e) => handleMouseDown(well.wellId, e.ctrlKey)}
+                    onMouseMove={(e) => handleMouseMove(well.wellId, e.ctrlKey)}
+                    onMouseUp={handleMouseUp}
+                ></div>
+            </Tooltip>
+        );
+    };
     const renderPlate = (rows, columns, wellsData) => {
         if (rows === 8 && columns === 12) {
             return (
@@ -138,18 +163,18 @@ const WellPlate = (props) => {
                             justifyContent="space-around"
                             sx={{marginInlineStart: '14px'}}
                         >
-                            <div className="plateTop">1</div>
-                            <div className="plateTop">2</div>
-                            <div className="plateTop">3</div>
-                            <div className="plateTop">4</div>
-                            <div className="plateTop">5</div>
-                            <div className="plateTop">6</div>
-                            <div className="plateTop">7</div>
-                            <div className="plateTop">8</div>
-                            <div className="plateTop">9</div>
-                            <div className="plateTop">10</div>
-                            <div className="plateTop">11</div>
-                            <div className="plateTop">12</div>
+                            <div className="plateTop-96">1</div>
+                            <div className="plateTop-96">2</div>
+                            <div className="plateTop-96">3</div>
+                            <div className="plateTop-96">4</div>
+                            <div className="plateTop-96">5</div>
+                            <div className="plateTop-96">6</div>
+                            <div className="plateTop-96">7</div>
+                            <div className="plateTop-96">8</div>
+                            <div className="plateTop-96">9</div>
+                            <div className="plateTop-96">10</div>
+                            <div className="plateTop-96">11</div>
+                            <div className="plateTop-96">12</div>
                         </Box>
                         <Box display="flex">
                             <Box
@@ -169,7 +194,7 @@ const WellPlate = (props) => {
                             </Box>
                             <div className="well-plate-96">
                                 {wellsData.map((well, index) =>
-                                    renderWell(well, index)
+                                    renderWell96(well, index)
                                 )}
                             </div>
                         </Box>
@@ -180,7 +205,7 @@ const WellPlate = (props) => {
             return (
                 <Box
                     sx={{
-                        width: 930,
+                        width: 568,
                         borderRadius: 2,
                         margin: 'auto',
                     }}
@@ -197,30 +222,30 @@ const WellPlate = (props) => {
                             justifyContent="space-around"
                             sx={{marginInlineStart: '14px'}}
                         >
-                            <div className="plateTop">1</div>
-                            <div className="plateTop">2</div>
-                            <div className="plateTop">3</div>
-                            <div className="plateTop">4</div>
-                            <div className="plateTop">5</div>
-                            <div className="plateTop">6</div>
-                            <div className="plateTop">7</div>
-                            <div className="plateTop">8</div>
-                            <div className="plateTop">9</div>
-                            <div className="plateTop">10</div>
-                            <div className="plateTop">11</div>
-                            <div className="plateTop">12</div>
-                            <div className="plateTop">13</div>
-                            <div className="plateTop">14</div>
-                            <div className="plateTop">15</div>
-                            <div className="plateTop">16</div>
-                            <div className="plateTop">17</div>
-                            <div className="plateTop">18</div>
-                            <div className="plateTop">19</div>
-                            <div className="plateTop">20</div>
-                            <div className="plateTop">21</div>
-                            <div className="plateTop">22</div>
-                            <div className="plateTop">23</div>
-                            <div className="plateTop">24</div>
+                            <div className="plateTop-384">1</div>
+                            <div className="plateTop-384">2</div>
+                            <div className="plateTop-384">3</div>
+                            <div className="plateTop-384">4</div>
+                            <div className="plateTop-384">5</div>
+                            <div className="plateTop-384">6</div>
+                            <div className="plateTop-384">7</div>
+                            <div className="plateTop-384">8</div>
+                            <div className="plateTop-384">9</div>
+                            <div className="plateTop-384">10</div>
+                            <div className="plateTop-384">11</div>
+                            <div className="plateTop-384">12</div>
+                            <div className="plateTop-384">13</div>
+                            <div className="plateTop-384">14</div>
+                            <div className="plateTop-384">15</div>
+                            <div className="plateTop-384">16</div>
+                            <div className="plateTop-384">17</div>
+                            <div className="plateTop-384">18</div>
+                            <div className="plateTop-384">19</div>
+                            <div className="plateTop-384">20</div>
+                            <div className="plateTop-384">21</div>
+                            <div className="plateTop-384">22</div>
+                            <div className="plateTop-384">23</div>
+                            <div className="plateTop-384">24</div>
                         </Box>
                         <Box display="flex">
                             <Box
@@ -248,7 +273,7 @@ const WellPlate = (props) => {
                             </Box>
                             <div className="well-plate-384">
                                 {wellsData.map((well, index) =>
-                                    renderWell(well, index)
+                                    renderWell384(well, index)
                                 )}
                             </div>
                         </Box>
