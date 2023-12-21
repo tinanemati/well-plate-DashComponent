@@ -102,6 +102,8 @@ const App = () => {
             {wellId: 'H11', fileName: 'test 94'},
             {wellId: 'H12', fileName: 'test 95'},
         ],
+        rows: 8,
+        columns: 12
     });
     const setProps = (newProps) => {
         setState(newProps);

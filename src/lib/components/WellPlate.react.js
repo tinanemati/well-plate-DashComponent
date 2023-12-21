@@ -115,72 +115,79 @@ const WellPlate = (props) => {
             </Tooltip>
         );
     };
-    return (
-        <>
-            <Box
-                sx={{
-                    width: 470,
-                    borderRadius: 2,
-                    margin: 'auto',
-                }}
-            >
-                <div style={{paddingBottom: 10}}>
-                    Selected:{' '}
-                    {selectedWells.length > 0
-                        ? `${selectedWells.map((well, _) => well)} `
-                        : 'not selected any'}
-                </div>
-                <Box className="border">
-                    <Box
-                        display="flex"
-                        justifyContent="space-around"
-                        sx={{marginInlineStart: '14px'}}
-                    >
-                        <div className="plateTop">1</div>
-                        <div className="plateTop">2</div>
-                        <div className="plateTop">3</div>
-                        <div className="plateTop">4</div>
-                        <div className="plateTop">5</div>
-                        <div className="plateTop">6</div>
-                        <div className="plateTop">7</div>
-                        <div className="plateTop">8</div>
-                        <div className="plateTop">9</div>
-                        <div className="plateTop">10</div>
-                        <div className="plateTop">11</div>
-                        <div className="plateTop">12</div>
-                    </Box>
-                    <Box display="flex">
+
+    const renderPlate = (rows, columns, wellsData) => {
+        if (rows === 8 && columns === 12) {
+            return (
+                <Box
+                    sx={{
+                        width: 470,
+                        borderRadius: 2,
+                        margin: 'auto',
+                    }}
+                >
+                    <div style={{paddingBottom: 10}}>
+                        Selected:{' '}
+                        {selectedWells.length > 0
+                            ? `${selectedWells.map((well, _) => well)} `
+                            : 'not selected any'}
+                    </div>
+                    <Box className="border">
                         <Box
                             display="flex"
-                            flexDirection="column"
                             justifyContent="space-around"
-                            paddingRight="2px"
+                            sx={{marginInlineStart: '14px'}}
                         >
-                            <div>A</div>
-                            <div>B</div>
-                            <div>C</div>
-                            <div>D</div>
-                            <div>E</div>
-                            <div>F</div>
-                            <div>G</div>
-                            <div>H</div>
+                            <div className="plateTop">1</div>
+                            <div className="plateTop">2</div>
+                            <div className="plateTop">3</div>
+                            <div className="plateTop">4</div>
+                            <div className="plateTop">5</div>
+                            <div className="plateTop">6</div>
+                            <div className="plateTop">7</div>
+                            <div className="plateTop">8</div>
+                            <div className="plateTop">9</div>
+                            <div className="plateTop">10</div>
+                            <div className="plateTop">11</div>
+                            <div className="plateTop">12</div>
                         </Box>
-                        <div
-                            className={
-                                WellsData.length === 96
-                                    ? 'well-plate-96'
-                                    : 'well-plate-384'
-                            }
-                        >
-                            {WellsData.map((well, index) =>
-                                renderWell(well, index)
-                            )}
-                        </div>
+                        <Box display="flex">
+                            <Box
+                                display="flex"
+                                flexDirection="column"
+                                justifyContent="space-around"
+                                paddingRight="2px"
+                            >
+                                <div>A</div>
+                                <div>B</div>
+                                <div>C</div>
+                                <div>D</div>
+                                <div>E</div>
+                                <div>F</div>
+                                <div>G</div>
+                                <div>H</div>
+                            </Box>
+                            <div
+                                className={
+                                    wellsData.length === 96
+                                        ? 'well-plate-96'
+                                        : 'well-plate-384'
+                                }
+                            >
+                                {wellsData.map((well, index) =>
+                                    renderWell(well, index)
+                                )}
+                            </div>
+                        </Box>
                     </Box>
                 </Box>
-            </Box>
-        </>
-    );
+            );
+        } else {
+            return null; // Return null or any other fallback content for different row/column combinations
+        }
+    };
+
+    return <>{renderPlate(props.rows, props.columns, WellsData)}</>;
 };
 WellPlate.propTypes = {
     /**
@@ -191,5 +198,13 @@ WellPlate.propTypes = {
      * The data used to redner plate
      */
     WellsData: PropTypes.array,
+    /**
+     * The number used to identify the number of rows in the plate.
+     */
+    rows: PropTypes.number,
+    /**
+     * The number used to identify the number of columns in the plate.
+     */
+    columns: PropTypes.number,
 };
 export default WellPlate;
