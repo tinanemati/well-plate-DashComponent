@@ -488,9 +488,9 @@ const App = () => {
         {wellId: 'H12', fileName: 'test 95'},
     ];
     const [state, setState] = useState({
-        WellsData: wells_384,
-        rows: 16,
-        columns: 24,
+        WellsData: wells_96,
+        rows: 8,
+        columns: 12,
     });
     const setProps = (newProps) => {
         setState(newProps);

@@ -90,7 +90,7 @@ const WellPlate = (props) => {
         ctrlKeyRef.current = false;
     };
 
-    const renderWell96 = (well, index) => {
+    const renderWell = (well, index, plateType) => {
         const wellId = well.wellId;
         const fileName = well.fileName;
 
@@ -106,7 +106,9 @@ const WellPlate = (props) => {
             >
                 <div
                     key={wellId}
-                    className={`well-96 ${isSelected ? 'selected' : ''}`}
+                    className={`well-${plateType} ${
+                        isSelected ? 'selected' : ''
+                    }`}
                     onClick={(e) => handleWellClick(well.wellId, e.ctrlKey)}
                     onMouseDown={(e) => handleMouseDown(well.wellId, e.ctrlKey)}
                     onMouseMove={(e) => handleMouseMove(well.wellId, e.ctrlKey)}
@@ -116,37 +118,15 @@ const WellPlate = (props) => {
         );
     };
 
-    const renderWell384 = (well, index) => {
-        const wellId = well.wellId;
-        const fileName = well.fileName;
-
-        const isSelected = selectedWells.includes(well.wellId);
-
-        return (
-            <Tooltip
-                placement="top"
-                hasArrow
-                label={fileName}
-                bg="grey"
-                color="black"
-            >
-                <div
-                    key={wellId}
-                    className={`well-384 ${isSelected ? 'selected' : ''}`}
-                    onClick={(e) => handleWellClick(well.wellId, e.ctrlKey)}
-                    onMouseDown={(e) => handleMouseDown(well.wellId, e.ctrlKey)}
-                    onMouseMove={(e) => handleMouseMove(well.wellId, e.ctrlKey)}
-                    onMouseUp={handleMouseUp}
-                ></div>
-            </Tooltip>
-        );
-    };
     const renderPlate = (rows, columns, wellsData) => {
-        if (rows === 8 && columns === 12) {
+        if ((rows === 8 && columns === 12) || (rows === 16 && columns === 24)) {
+            const plateType = rows === 8 ? '96' : '384';
+            const width = rows === 8 ? 470 : 568;
+
             return (
                 <Box
                     sx={{
-                        width: 470,
+                        width: width,
                         borderRadius: 2,
                         margin: 'auto',
                     }}
@@ -163,18 +143,14 @@ const WellPlate = (props) => {
                             justifyContent="space-around"
                             sx={{marginInlineStart: '14px'}}
                         >
-                            <div className="plateTop-96">1</div>
-                            <div className="plateTop-96">2</div>
-                            <div className="plateTop-96">3</div>
-                            <div className="plateTop-96">4</div>
-                            <div className="plateTop-96">5</div>
-                            <div className="plateTop-96">6</div>
-                            <div className="plateTop-96">7</div>
-                            <div className="plateTop-96">8</div>
-                            <div className="plateTop-96">9</div>
-                            <div className="plateTop-96">10</div>
-                            <div className="plateTop-96">11</div>
-                            <div className="plateTop-96">12</div>
+                            {Array.from({length: columns}, (_, i) => (
+                                <div
+                                    key={i + 1}
+                                    className={`plateTop-${plateType}`}
+                                >
+                                    {i + 1}
+                                </div>
+                            ))}
                         </Box>
                         <Box display="flex">
                             <Box
@@ -183,97 +159,15 @@ const WellPlate = (props) => {
                                 justifyContent="space-around"
                                 paddingRight="2px"
                             >
-                                <div>A</div>
-                                <div>B</div>
-                                <div>C</div>
-                                <div>D</div>
-                                <div>E</div>
-                                <div>F</div>
-                                <div>G</div>
-                                <div>H</div>
+                                {Array.from({length: rows}, (_, i) => (
+                                    <div key={String.fromCharCode(65 + i)}>
+                                        {String.fromCharCode(65 + i)}
+                                    </div>
+                                ))}
                             </Box>
-                            <div className="well-plate-96">
+                            <div className={`well-plate-${plateType}`}>
                                 {wellsData.map((well, index) =>
-                                    renderWell96(well, index)
-                                )}
-                            </div>
-                        </Box>
-                    </Box>
-                </Box>
-            );
-        } else if (rows === 16 && columns === 24) {
-            return (
-                <Box
-                    sx={{
-                        width: 568,
-                        borderRadius: 2,
-                        margin: 'auto',
-                    }}
-                >
-                    <div style={{paddingBottom: 10}}>
-                        Selected:{' '}
-                        {selectedWells.length > 0
-                            ? `${selectedWells.map((well, _) => well)} `
-                            : 'not selected any'}
-                    </div>
-                    <Box className="border">
-                        <Box
-                            display="flex"
-                            justifyContent="space-around"
-                            sx={{marginInlineStart: '14px'}}
-                        >
-                            <div className="plateTop-384">1</div>
-                            <div className="plateTop-384">2</div>
-                            <div className="plateTop-384">3</div>
-                            <div className="plateTop-384">4</div>
-                            <div className="plateTop-384">5</div>
-                            <div className="plateTop-384">6</div>
-                            <div className="plateTop-384">7</div>
-                            <div className="plateTop-384">8</div>
-                            <div className="plateTop-384">9</div>
-                            <div className="plateTop-384">10</div>
-                            <div className="plateTop-384">11</div>
-                            <div className="plateTop-384">12</div>
-                            <div className="plateTop-384">13</div>
-                            <div className="plateTop-384">14</div>
-                            <div className="plateTop-384">15</div>
-                            <div className="plateTop-384">16</div>
-                            <div className="plateTop-384">17</div>
-                            <div className="plateTop-384">18</div>
-                            <div className="plateTop-384">19</div>
-                            <div className="plateTop-384">20</div>
-                            <div className="plateTop-384">21</div>
-                            <div className="plateTop-384">22</div>
-                            <div className="plateTop-384">23</div>
-                            <div className="plateTop-384">24</div>
-                        </Box>
-                        <Box display="flex">
-                            <Box
-                                display="flex"
-                                flexDirection="column"
-                                justifyContent="space-around"
-                                paddingRight="2px"
-                            >
-                                <div>A</div>
-                                <div>B</div>
-                                <div>C</div>
-                                <div>D</div>
-                                <div>E</div>
-                                <div>F</div>
-                                <div>G</div>
-                                <div>H</div>
-                                <div>I</div>
-                                <div>J</div>
-                                <div>K</div>
-                                <div>L</div>
-                                <div>M</div>
-                                <div>N</div>
-                                <div>O</div>
-                                <div>P</div>
-                            </Box>
-                            <div className="well-plate-384">
-                                {wellsData.map((well, index) =>
-                                    renderWell384(well, index)
+                                    renderWell(well, index, plateType)
                                 )}
                             </div>
                         </Box>
@@ -283,8 +177,8 @@ const WellPlate = (props) => {
         } else {
             return (
                 <h1>
-                    the number of rows and column need to be a combination 8x12
-                    or 16x24
+                    The number of rows and columns needs to be a combination of
+                    8x12 or 16x24.
                 </h1>
             );
         }
