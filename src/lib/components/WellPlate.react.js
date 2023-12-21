@@ -119,7 +119,7 @@ const WellPlate = (props) => {
         <>
             <Box
                 sx={{
-                    width: 'fit-content',
+                    width: 470,
                     borderRadius: 2,
                     margin: 'auto',
                 }}
