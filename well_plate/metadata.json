@@ -1,6 +1,6 @@
 {
   "src/lib/components/WellPlate.react.js": {
-    "description": "WellPlate component that allow the user to select wells \nin a generic well plate",
+    "description": "WellPlate component that allow the user to select wells\nin a generic well plate",
     "displayName": "WellPlate",
     "methods": [],
     "props": {
@@ -17,6 +17,20 @@
         },
         "required": false,
         "description": "The data used to redner plate"
+      },
+      "rows": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "The number used to identify the number of rows in the plate."
+      },
+      "columns": {
+        "type": {
+          "name": "number"
+        },
+        "required": false,
+        "description": "The number used to identify the number of columns in the plate."
       }
     }
   }

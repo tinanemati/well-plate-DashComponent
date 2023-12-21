@@ -51,10 +51,14 @@ app.layout = html.Div([
     WellPlate(
         id='96-wellplate-component',
         WellsData=wells_data_96,
+        rows=8,
+        columns=12
     ),
     WellPlate(
         id='384-wellplate-component',
         WellsData=wells_data_384,
+        rows=16,
+        columns=24
     ),
 ])
 #print(wells_data_384)
