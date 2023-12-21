@@ -13,20 +13,20 @@ Keyword arguments:
 - id (string; optional):
     The ID used to identify this component in Dash callbacks.
 
-- WellsData (list; optional):
+- WellsData (list; required):
     The data used to redner plate.
 
-- columns (number; optional):
+- columns (number; required):
     The number used to identify the number of columns in the plate.
 
-- rows (number; optional):
+- rows (number; required):
     The number used to identify the number of rows in the plate."""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'well_plate'
     _type = 'WellPlate'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, WellsData=Component.UNDEFINED, rows=Component.UNDEFINED, columns=Component.UNDEFINED, **kwargs):
+    def __init__(self, id=Component.UNDEFINED, WellsData=Component.REQUIRED, rows=Component.REQUIRED, columns=Component.REQUIRED, **kwargs):
         self._prop_names = ['id', 'WellsData', 'columns', 'rows']
         self._valid_wildcard_attributes =            []
         self.available_properties = ['id', 'WellsData', 'columns', 'rows']
@@ -35,5 +35,10 @@ Keyword arguments:
         _locals = locals()
         _locals.update(kwargs)  # For wildcard attrs and excess named props
         args = {k: _locals[k] for k in _explicit_args}
+
+        for k in ['WellsData', 'columns', 'rows']:
+            if k not in args:
+                raise TypeError(
+                    'Required argument `' + k + '` was not specified.')
 
         super(WellPlate, self).__init__(**args)
