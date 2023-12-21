@@ -180,7 +180,7 @@ const WellPlate = (props) => {
             return (
                 <Box
                     sx={{
-                        width: 470,
+                        width: 930,
                         borderRadius: 2,
                         margin: 'auto',
                     }}

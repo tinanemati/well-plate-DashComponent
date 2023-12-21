@@ -57,7 +57,7 @@ app.layout = html.Div([
         WellsData=wells_data_384,
     ),
 ])
-
+#print(wells_data_384)
 # @callback(Output('output-div', 'children'), [Input('my-test-component', 'value')])
 # def display_output(value):
 #     return 'You have entered {}'.format(value)
