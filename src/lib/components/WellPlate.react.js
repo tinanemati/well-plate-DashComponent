@@ -193,14 +193,14 @@ WellPlate.propTypes = {
     /**
      * The data used to redner plate
      */
-    WellsData: PropTypes.array,
+    WellsData: PropTypes.array.isRequired,
     /**
      * The number used to identify the number of rows in the plate.
      */
-    rows: PropTypes.number,
+    rows: PropTypes.number.isRequired,
     /**
      * The number used to identify the number of columns in the plate.
      */
-    columns: PropTypes.number,
+    columns: PropTypes.number.isRequired,
 };
 export default WellPlate;
