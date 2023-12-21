@@ -8,7 +8,6 @@ import {Box} from '@chakra-ui/react';
  * in a generic well plate
  */
 const WellPlate = (props) => {
-    const WellsData = props.WellsData;
     const [selectedWells, setSelectedWells] = useState([]);
     const [isSelecting, setIsSelecting] = useState(false);
     const selectionStartRef = useRef(null);
@@ -184,7 +183,7 @@ const WellPlate = (props) => {
         }
     };
 
-    return <>{renderPlate(props.rows, props.columns, WellsData)}</>;
+    return <>{renderPlate(props.rows, props.columns, props.WellsData)}</>;
 };
 WellPlate.propTypes = {
     /**
