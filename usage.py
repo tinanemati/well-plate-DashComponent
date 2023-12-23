@@ -49,24 +49,30 @@ for row in rows_384:
 
 app.layout = html.Div([
     WellPlate(
-        id='96-wellplate-component',
+        id='96-wellplate-input',
         WellsData=wells_data_96,
         rows=8,
         columns=12,
         selectedWells=[]
     ),
+    html.Div(id='96-wellplate-output'),
     WellPlate(
-        id='384-wellplate-component',
+        id='384-wellplate-input',
         WellsData=wells_data_384,
         rows=16,
         columns=24,
         selectedWells=[]
     ),
+    html.Div(id='384-wellplate-output'),
 ])
-#print(wells_data_384)
-# @callback(Output('output-div', 'children'), [Input('my-test-component', 'value')])
-# def display_output(value):
-#     return 'You have entered {}'.format(value)
+
+@callback(Output('96-wellplate-output', 'children'), [Input('96-wellplate-input', 'selectedWells')])
+def display_output(selectedWells):
+    return f"You have selected the following wells in the 96 well-plate: {', '.join(selectedWells)}"
+
+@callback(Output('384-wellplate-output', 'children'), [Input('384-wellplate-input', 'selectedWells')])
+def display_output(selectedWells):
+    return f"You have selected the following wells in the 384 well-plate: {', '.join(selectedWells)}"
 
 
 if __name__ == '__main__':
