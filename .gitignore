@@ -296,6 +296,7 @@ _validate_init.py
 
 # The file used to testing config
 pytest.ini
+setup.py
 
 # The file that has the checklist 
 MANIFEST.in
