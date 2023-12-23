@@ -275,3 +275,9 @@ GitHub.sublime-settings
 # Julia manifest file names
 Manifest.toml
 JuliaManifest.toml
+
+# Ignore config files
+.eslintignore
+.npmignore
+.pylintrc
+.pytest.ini
