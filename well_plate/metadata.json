@@ -36,7 +36,7 @@
         "type": {
           "name": "array"
         },
-        "required": false,
+        "required": true,
         "description": "The selected well in plate by user"
       }
     }

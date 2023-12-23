@@ -22,14 +22,14 @@ Keyword arguments:
 - rows (number; required):
     The number used to identify the number of rows in the plate.
 
-- selectedWells (list; optional):
+- selectedWells (list; required):
     The selected well in plate by user."""
     _children_props = []
     _base_nodes = ['children']
     _namespace = 'well_plate'
     _type = 'WellPlate'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, WellsData=Component.REQUIRED, rows=Component.REQUIRED, columns=Component.REQUIRED, selectedWells=Component.UNDEFINED, **kwargs):
+    def __init__(self, id=Component.UNDEFINED, WellsData=Component.REQUIRED, rows=Component.REQUIRED, columns=Component.REQUIRED, selectedWells=Component.REQUIRED, **kwargs):
         self._prop_names = ['id', 'WellsData', 'columns', 'rows', 'selectedWells']
         self._valid_wildcard_attributes =            []
         self.available_properties = ['id', 'WellsData', 'columns', 'rows', 'selectedWells']
@@ -39,7 +39,7 @@ Keyword arguments:
         _locals.update(kwargs)  # For wildcard attrs and excess named props
         args = {k: _locals[k] for k in _explicit_args}
 
-        for k in ['WellsData', 'columns', 'rows']:
+        for k in ['WellsData', 'columns', 'rows', 'selectedWells']:
             if k not in args:
                 raise TypeError(
                     'Required argument `' + k + '` was not specified.')
