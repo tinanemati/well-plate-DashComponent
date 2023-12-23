@@ -211,6 +211,6 @@ WellPlate.propTypes = {
     /**
      * The selected well in plate by user
      */
-    selectedWells: PropTypes.array,
+    selectedWells: PropTypes.array.isRequired,
 };
 export default WellPlate;
