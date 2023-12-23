@@ -134,15 +134,9 @@ const WellPlate = (props) => {
                     sx={{
                         width: width,
                         borderRadius: 2,
-                        margin: 'auto',
+                        paddingTop: 10
                     }}
                 >
-                    <div style={{paddingBottom: 10}}>
-                        Selected:{' '}
-                        {selectedWells.length > 0
-                            ? `${selectedWells.map((well, _) => well)} `
-                            : 'not selected any'}
-                    </div>
                     <Box className="border">
                         <Box
                             display="flex"
