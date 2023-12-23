@@ -134,7 +134,8 @@ const WellPlate = (props) => {
                     sx={{
                         width: width,
                         borderRadius: 2,
-                        paddingTop: 10
+                        paddingTop: 10,
+                        paddingBottom: 10,
                     }}
                 >
                     <Box className="border">
