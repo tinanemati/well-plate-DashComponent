@@ -36,7 +36,8 @@ for row in rows_96:
         wells_data_96.append(
             {"wellId": well_id, "fileName": file_name})
 
-rows_384 = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P"]
+rows_384 = ["A", "B", "C", "D", "E", "F", "G",
+            "H", "I", "J", "K", "L", "M", "N", "O", "P"]
 columns_384 = [str(i) for i in range(1, 25)]
 count = 0
 for row in rows_384:
@@ -48,6 +49,7 @@ for row in rows_384:
             {"wellId": well_id, "fileName": file_name})
 
 app.layout = html.Div([
+    html.Div(id='96-wellplate-output'),
     WellPlate(
         id='96-wellplate-input',
         WellsData=wells_data_96,
@@ -55,7 +57,7 @@ app.layout = html.Div([
         columns=12,
         selectedWells=[]
     ),
-    html.Div(id='96-wellplate-output'),
+    html.Div(id='384-wellplate-output'),
     WellPlate(
         id='384-wellplate-input',
         WellsData=wells_data_384,
@@ -63,12 +65,13 @@ app.layout = html.Div([
         columns=24,
         selectedWells=[]
     ),
-    html.Div(id='384-wellplate-output'),
 ])
+
 
 @callback(Output('96-wellplate-output', 'children'), [Input('96-wellplate-input', 'selectedWells')])
 def display_output(selectedWells):
     return f"You have selected the following wells in the 96 well-plate: {', '.join(selectedWells)}"
+
 
 @callback(Output('384-wellplate-output', 'children'), [Input('384-wellplate-input', 'selectedWells')])
 def display_output(selectedWells):
