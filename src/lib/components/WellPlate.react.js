@@ -11,7 +11,7 @@ const WellPlate = (props) => {
     const [selectedWells, setSelectedWells] = useState(props.selectedWell);
     const updateSelection = (newSelection) => {
         setSelectedWells(newSelection)
-        props.setProps({selectedWells: newSelection})
+        props.setProps({...props, selectedWells: newSelection})
     }
     const [isSelecting, setIsSelecting] = useState(false);
     const selectionStartRef = useRef(null);
@@ -191,7 +191,6 @@ const WellPlate = (props) => {
             );
         }
     };
-
     return <>{renderPlate(props.rows, props.columns, props.WellsData)}</>;
 };
 WellPlate.propTypes = {
