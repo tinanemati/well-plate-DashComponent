@@ -8,7 +8,7 @@ import {Box} from '@chakra-ui/react';
  * in a generic well plate
  */
 const WellPlate = (props) => {
-    const [selectedWells, setSelectedWells] = useState(props.selectedWell);
+    const [selectedWells, setSelectedWells] = useState(props.selectedWells);
     const updateSelection = (newSelection) => {
         setSelectedWells(newSelection);
         props.setProps({...props, selectedWells: newSelection});
@@ -18,7 +18,6 @@ const WellPlate = (props) => {
     const ctrlKeyRef = useRef(false);
 
     const handleWellClick = (wellId, ctrlKey) => {
-        //const currentSelection = selectedWells || props.selectedWells;
 
         if (ctrlKey) {
             // Toggle selection for individual wells when Ctrl key is held down
@@ -100,10 +99,7 @@ const WellPlate = (props) => {
         const wellId = well.wellId;
         const fileName = well.fileName;
 
-        const wellSelection = props.setProps
-            ? props.selectedWells
-            : selectedWells;
-        const isSelected = wellSelection.includes(wellId);
+        const isSelected = selectedWells.includes(wellId);
 
         return (
             <div key={index}>
@@ -132,9 +128,6 @@ const WellPlate = (props) => {
         if ((rows === 8 && columns === 12) || (rows === 16 && columns === 24)) {
             const plateType = rows === 8 ? '96' : '384';
             const width = rows === 8 ? 470 : 568;
-            const wellSelection = props.setProps
-                ? props.selectedWells
-                : selectedWells;
 
             return (
                 <Box
@@ -146,8 +139,8 @@ const WellPlate = (props) => {
                 >
                     <div style={{paddingBottom: 10}}>
                         Selected:{' '}
-                        {wellSelection.length > 0
-                            ? `${wellSelection.map((well, _) => well)} `
+                        {selectedWells.length > 0
+                            ? `${selectedWells.map((well, _) => well)} `
                             : 'not selected any'}
                     </div>
                     <Box className="border">
@@ -218,6 +211,6 @@ WellPlate.propTypes = {
     /**
      * The selected well in plate by user
      */
-    selectedWell: PropTypes.array,
+    selectedWells: PropTypes.array,
 };
 export default WellPlate;
