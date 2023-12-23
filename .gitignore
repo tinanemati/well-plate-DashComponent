@@ -278,6 +278,24 @@ JuliaManifest.toml
 
 # Ignore config files
 .eslintignore
-.npmignore
-.pylintrc
 .pytest.ini
+
+# Configuration options for Prettier and pylint
+.pylintrc
+.prettierrc
+
+# npm package dependencies
+.npmignore
+
+# JavaScript lining tool 
+.eslintignore
+.eslintrc
+
+# The file used to validate publish setting 
+_validate_init.py
+
+# The file used to testing config
+pytest.ini
+
+# The file that has the checklist 
+MANIFEST.in
