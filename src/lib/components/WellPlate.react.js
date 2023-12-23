@@ -8,26 +8,33 @@ import {Box} from '@chakra-ui/react';
  * in a generic well plate
  */
 const WellPlate = (props) => {
-    const [selectedWells, setSelectedWells] = useState([]);
+    const [selectedWells, setSelectedWells] = useState(props.selectedWell);
+    const updateSelection = (newSelection) => {
+        setSelectedWells(newSelection)
+        props.setProps({selectedWells: newSelection})
+    }
     const [isSelecting, setIsSelecting] = useState(false);
     const selectionStartRef = useRef(null);
     const ctrlKeyRef = useRef(false);
 
     const handleWellClick = (wellId, ctrlKey) => {
+        //const currentSelection = selectedWells || props.selectedWells;
+
         if (ctrlKey) {
             // Toggle selection for individual wells when Ctrl key is held down
+
             if (selectedWells.includes(wellId)) {
-                setSelectedWells((prevSelection) =>
+                updateSelection((prevSelection) =>
                     prevSelection.filter(
                         (selectedWell) => selectedWell !== wellId
                     )
                 );
             } else {
-                setSelectedWells((prevSelection) => [...prevSelection, wellId]);
+                updateSelection((prevSelection) => [...prevSelection, wellId]);
             }
         } else {
             // Clear selection and select only the clicked well
-            setSelectedWells([wellId]);
+            updateSelection([wellId]);
         }
     };
 
@@ -38,7 +45,7 @@ const WellPlate = (props) => {
 
         if (!ctrlKey) {
             // Clear selection and select only the clicked well when Ctrl key is not held down
-            setSelectedWells([wellId]);
+            updateSelection([wellId]);
         }
     };
 
@@ -70,16 +77,16 @@ const WellPlate = (props) => {
 
             if (ctrlKey || ctrlKeyRef.current) {
                 // If Ctrl key is held down during move, merge selections
-                setSelectedWells((prevSelection) => [
+                updateSelection((prevSelection) => [
                     ...prevSelection,
                     ...selectedWellsInRange,
                 ]);
             } else {
                 // Otherwise, replace the selection with the new range
-                setSelectedWells(selectedWellsInRange);
+                updateSelection(selectedWellsInRange);
             }
 
-            setSelectedWells(selectedWellsInRange);
+            updateSelection(selectedWellsInRange);
         }
     };
 
@@ -93,7 +100,8 @@ const WellPlate = (props) => {
         const wellId = well.wellId;
         const fileName = well.fileName;
 
-        const isSelected = selectedWells.includes(well.wellId);
+        const wellSelection = props.setProps ? props.selectedWells : selectedWells; 
+        const isSelected = wellSelection.includes(wellId);
 
         return (
             <Tooltip
@@ -104,13 +112,13 @@ const WellPlate = (props) => {
                 color="black"
             >
                 <div
-                    key={wellId}
+                    key={index}
                     className={`well-${plateType} ${
                         isSelected ? 'selected' : ''
                     }`}
-                    onClick={(e) => handleWellClick(well.wellId, e.ctrlKey)}
-                    onMouseDown={(e) => handleMouseDown(well.wellId, e.ctrlKey)}
-                    onMouseMove={(e) => handleMouseMove(well.wellId, e.ctrlKey)}
+                    onClick={(e) => handleWellClick(wellId, e.ctrlKey)}
+                    onMouseDown={(e) => handleMouseDown(wellId, e.ctrlKey)}
+                    onMouseMove={(e) => handleMouseMove(wellId, e.ctrlKey)}
                     onMouseUp={handleMouseUp}
                 ></div>
             </Tooltip>
@@ -121,6 +129,7 @@ const WellPlate = (props) => {
         if ((rows === 8 && columns === 12) || (rows === 16 && columns === 24)) {
             const plateType = rows === 8 ? '96' : '384';
             const width = rows === 8 ? 470 : 568;
+            const wellSelection = props.setProps ? props.selectedWells : selectedWells; 
 
             return (
                 <Box
@@ -132,8 +141,8 @@ const WellPlate = (props) => {
                 >
                     <div style={{paddingBottom: 10}}>
                         Selected:{' '}
-                        {selectedWells.length > 0
-                            ? `${selectedWells.map((well, _) => well)} `
+                        {wellSelection.length > 0
+                            ? `${wellSelection.map((well, _) => well)} `
                             : 'not selected any'}
                     </div>
                     <Box className="border">
@@ -202,5 +211,9 @@ WellPlate.propTypes = {
      * The number used to identify the number of columns in the plate.
      */
     columns: PropTypes.number.isRequired,
+    /**
+     * The selected well in plate by user
+     */
+    selectedWell: PropTypes.array
 };
 export default WellPlate;

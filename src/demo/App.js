@@ -491,6 +491,7 @@ const App = () => {
         WellsData: wells_96,
         rows: 8,
         columns: 12,
+        selectedWells:[],
     });
     const setProps = (newProps) => {
         setState(newProps);
