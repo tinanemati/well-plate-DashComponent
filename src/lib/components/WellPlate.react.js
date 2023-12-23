@@ -10,9 +10,9 @@ import {Box} from '@chakra-ui/react';
 const WellPlate = (props) => {
     const [selectedWells, setSelectedWells] = useState(props.selectedWell);
     const updateSelection = (newSelection) => {
-        setSelectedWells(newSelection)
-        props.setProps({...props, selectedWells: newSelection})
-    }
+        setSelectedWells(newSelection);
+        props.setProps({...props, selectedWells: newSelection});
+    };
     const [isSelecting, setIsSelecting] = useState(false);
     const selectionStartRef = useRef(null);
     const ctrlKeyRef = useRef(false);
@@ -100,28 +100,31 @@ const WellPlate = (props) => {
         const wellId = well.wellId;
         const fileName = well.fileName;
 
-        const wellSelection = props.setProps ? props.selectedWells : selectedWells; 
+        const wellSelection = props.setProps
+            ? props.selectedWells
+            : selectedWells;
         const isSelected = wellSelection.includes(wellId);
 
         return (
-            <Tooltip
-                placement="top"
-                hasArrow
-                label={fileName}
-                bg="grey"
-                color="black"
-            >
-                <div
-                    key={index}
-                    className={`well-${plateType} ${
-                        isSelected ? 'selected' : ''
-                    }`}
-                    onClick={(e) => handleWellClick(wellId, e.ctrlKey)}
-                    onMouseDown={(e) => handleMouseDown(wellId, e.ctrlKey)}
-                    onMouseMove={(e) => handleMouseMove(wellId, e.ctrlKey)}
-                    onMouseUp={handleMouseUp}
-                ></div>
-            </Tooltip>
+            <div key={index}>
+                <Tooltip
+                    placement="top"
+                    hasArrow
+                    label={fileName}
+                    bg="grey"
+                    color="black"
+                >
+                    <div
+                        className={`well-${plateType} ${
+                            isSelected ? 'selected' : ''
+                        }`}
+                        onClick={(e) => handleWellClick(wellId, e.ctrlKey)}
+                        onMouseDown={(e) => handleMouseDown(wellId, e.ctrlKey)}
+                        onMouseMove={(e) => handleMouseMove(wellId, e.ctrlKey)}
+                        onMouseUp={handleMouseUp}
+                    ></div>
+                </Tooltip>
+            </div>
         );
     };
 
@@ -129,7 +132,9 @@ const WellPlate = (props) => {
         if ((rows === 8 && columns === 12) || (rows === 16 && columns === 24)) {
             const plateType = rows === 8 ? '96' : '384';
             const width = rows === 8 ? 470 : 568;
-            const wellSelection = props.setProps ? props.selectedWells : selectedWells; 
+            const wellSelection = props.setProps
+                ? props.selectedWells
+                : selectedWells;
 
             return (
                 <Box
@@ -153,7 +158,7 @@ const WellPlate = (props) => {
                         >
                             {Array.from({length: columns}, (_, i) => (
                                 <div
-                                    key={i + 1}
+                                    key={`column-${i}`}
                                     className={`plateTop-${plateType}`}
                                 >
                                     {i + 1}
@@ -168,7 +173,7 @@ const WellPlate = (props) => {
                                 paddingRight="2px"
                             >
                                 {Array.from({length: rows}, (_, i) => (
-                                    <div key={String.fromCharCode(65 + i)}>
+                                    <div key={`row-${i}`}>
                                         {String.fromCharCode(65 + i)}
                                     </div>
                                 ))}
@@ -213,6 +218,6 @@ WellPlate.propTypes = {
     /**
      * The selected well in plate by user
      */
-    selectedWell: PropTypes.array
+    selectedWell: PropTypes.array,
 };
 export default WellPlate;
